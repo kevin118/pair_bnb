@@ -1,0 +1,9 @@
+<div id="clearance" class="sign-up">
+  <h2><%= t(".title") %></h2>
+<%= form_for [current_user,@listing] do |form| %>
+    <%= render partial: '/listings/form', object: form %>
+
+      
+<!--     <%=link_to 'My_Listing ', user_listings_path(current_user)%>
+ -->  <% end %>
+</div>

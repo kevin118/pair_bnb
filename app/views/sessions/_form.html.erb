@@ -1,25 +1,38 @@
-<%= form_for :session, url: session_path do |form| %>
-  <div class="text-field">
-    <%= form.label :email %>
-    <%= form.text_field :email, type: 'email' %>
+<div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Login via site</h3>
+        </div>
+         <div class="panel-body">
+         
+ 
+          <%= form_for :session, url: session_path do |form| %>
+          <div class="form-group">
+            <%= form.text_field :email, placeholder:"yourmail@example.com", type: 'email'%>
+          </div>
+
+          <div class="form-group">
+           
+            <%= form.password_field :password, placeholder:"Password", class:"password-field"%>
+          </div>
+          <%= link_to t(".forgot_password"), new_password_path %>
+          <br></br>
+
+          <div class="submit-field">
+            <%= form.submit 'Login', class:'btn btn-lg btn-success btn-block' %>
+          </div>
+        
+           
+
+         <center><h4>OR</h4></center>
+             
+          <%= link_to 'Login via Facebook', '/auth/facebook', class:'btn btn-lg btn-primary btn-block' %>
+          <% end %>
+         </div>
+          </div>
+      </div>
+    </div>
   </div>
-
-  <div class="password-field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div class="submit-field">
-    <%= form.submit %>
-  </div>
-
-  <div class="other-links">
-    <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to t(".sign_up"), sign_up_path %>
-    <% end %>
-    <%= link_to t(".forgot_password"), new_password_path %>
-  </div>
-
-  <%= link_to 'Facebook', '/auth/facebook' %>
-
-<% end %>
+</div>

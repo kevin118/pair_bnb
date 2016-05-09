@@ -1,2 +1,20 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<h1>Welcome to PairBnb</h1>
+
+
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Do You Know?</h1>      
+    <p>People who who have more birthdays tend to live longer</p>
+  </div>
+  <p>Smile if you never knew</p>      
+  <p>Smile still even though you have seen this else where.</p>
+  <div class="submit-field">
+		<%= link_to t(".sign_in"), sign_in_path, class: "btn btn-primary btn-md" %>
+        <% if Clearance.configuration.allow_sign_up? %>
+        <%= link_to t(".sign_up"), sign_up_path, class: "btn btn-primary btn-md" %>
+        <% end %>         
+	</div>      
+</div>
+
+

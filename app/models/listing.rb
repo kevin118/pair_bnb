@@ -17,7 +17,7 @@ def all_tags
 end
 
 def self.tagged_with(name)
-  Tag.find_by_name!(name).posts
+  Tag.find_by_name!(name).listings
 end
 
 end

@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
+
  
-  before_action :userid
+  before_action :userid, except:[:tags]
 
 
   def index
@@ -46,10 +47,17 @@ class ListingsController < ApplicationController
  
     redirect_to listings_path
   end
+
+  def tags
+    if params[:tag]
+      @listings = Listing.tagged_with(params[:tag])
+    end
+  end
  
   
   private
     def userid 
+      byebug
       @user = User.find(params[:user_id])
     end
       

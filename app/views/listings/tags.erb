@@ -1,0 +1,6 @@
+<% @listings.each do |listing| %>
+	<%= listing.property_name %>
+	<%= listing.address %>
+	<%= listing.property_type %>
+	<%= raw tag_links(listing.all_tags) %>
+<% end %>

@@ -21,6 +21,7 @@ class ListingsController < ApplicationController
  
   def create
     @listing = @user.listings.new(listing_params)
+    @listing.all_tags = listing_params[:all_tags]
  
     if @listing.save
       redirect_to user_listings_path
@@ -46,12 +47,13 @@ class ListingsController < ApplicationController
     redirect_to listings_path
   end
  
+  
   private
     def userid 
       @user = User.find(params[:user_id])
     end
       
     def listing_params
-      params.require(:listing).permit(:property_name, :address, :property_type, :rental)
+      params.require(:listing).permit(:property_name, :address, :property_type, :rental, :smoking, :gym, :internet, :tub, :all_tags)
     end
 end

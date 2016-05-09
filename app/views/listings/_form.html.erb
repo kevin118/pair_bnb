@@ -27,6 +27,22 @@
   <%= form.select :rental, [['Whole Unit','W'],['Single Room', 'R'], ['Shared Room', 'S']] %>
 </div>
 
+<%= form.label :smoking, "Allow smoking in property:" %>
+<%= form.check_box :smoking, value: "smoking" %>
+<br>
+<%= form.label :gym, "Gym facilities:" %>  
+<%= form.check_box :gym, value: "gym" %>
+<br>
+<%= form.label :internet, "Internet:" %>
+<%= form.check_box :internet, value: "internet" %>
+<br>
+<%= form.label :tub, "Hot Tub:" %>
+<%= form.check_box :tub, value: "hot tub" %>
+
+<%= form.label :all_tags, "Labels:" %>
+<%= form.text_field :all_tags%>
+
+
       <%= form.submit 'Go!', class:'btn btn-lg btn-default btn-block'%>
  
 

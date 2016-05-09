@@ -6,6 +6,10 @@ class CreateListings < ActiveRecord::Migration
 		t.string :address
 		t.string :property_type
 		t.string :rental
+		t.string :smoking
+		t.string :gym
+		t.string :internet
+		t.string :tub
      	t.timestamps null: false
     end
   end

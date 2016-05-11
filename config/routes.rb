@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'reservations/index'
+
+  get 'reservations/edit'
+
+  get 'reservations/new'
+
+  get 'reservations/show'
+
   get 'listing/index'
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
@@ -8,13 +16,13 @@ Rails.application.routes.draw do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
-    resources :listings
+  resources :listings do
+      resources :reservations
+  end    
 
-  
   end
 
   resources :users, only: [:show, :edit, :update, :destroy]     
-
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
@@ -38,7 +46,7 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-
+  
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

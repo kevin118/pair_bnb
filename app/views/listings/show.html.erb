@@ -11,6 +11,7 @@
   <%= @listing.address %>
 </p>
 
+
 <p>
   <strong>Property Type:</strong>
   <%= @listing.property_type %>
@@ -30,3 +31,29 @@
   <strong>Label:</strong>
   <%=raw tag_links(@listing.all_tags)%>
 </p>
+
+
+<h4 style="color:blue;">Book now</h4>
+<%= form_for [current_user,@listing, Reservation.new] do |formreserve| %>
+    <%= render partial: '/listings/formreserve', object: formreserve, as: :f %>
+<%end%>
+
+<%@reservations.each do |reservation| %>
+<p>
+  <strong>Reservation ID:</strong>
+  <%=reservation.id%>
+</p>
+
+<p>
+  <strong>Check In Date:</strong>
+  <%=reservation.check_in%>
+</p>
+
+<p>
+  <strong>Check Out Date:</strong>
+  <%=reservation.check_out%>
+</p>
+<% end %>
+
+<%=link_to 'Edit This Listing ', edit_user_listing_path(current_user, @listing)%>
+<%=link_to 'Delete This Listing ', user_listing_path(current_user, @listing), method: :delete%>

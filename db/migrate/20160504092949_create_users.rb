@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :last_name
       t.string :gender
       t.string :nationality
+      t.string :avatar
       t.string :encrypted_password, limit: 128, null: false
       t.string :confirmation_token, limit: 128
       t.string :remember_token, limit: 128, null: false

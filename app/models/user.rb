@@ -2,7 +2,10 @@ class User < ActiveRecord::Base
   include Clearance::User
 
   has_many :authentications, :dependent => :destroy
-  has_many :listings
+  has_many :listings, dependent: :destroy 
+  has_many :reservations, dependent: :destroy
+
+  mount_uploader :avatar, AvatarUploader
 
   def new_token
   	SecureRandom.urlsafe_base64

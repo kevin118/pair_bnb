@@ -1,6 +1,9 @@
-<h1>Your New Listing</h1>
+<h1>Listings</h1>
 
-<%@user.listings.each do |listing|%>
+<%@listing.each do |listing|%>
+<%listing.places.each do |x|%>
+  <%= image_tag x %>
+<%end%>
 <p> 
   <strong>Property Name:</strong>
   <%= listing.property_name %>
@@ -17,7 +20,7 @@
 </p>
 
 <p>
-  <strong>Rental:</strong>
+  <strong>Relistingsntal:</strong>
   <%= listing.rental %>
 </p>
 
@@ -30,4 +33,10 @@
   <strong>Label:</strong>
     <%=raw tag_links(listing.all_tags)%>
 </p>
+
+
+
+<%=link_to 'Edit This Listing ', edit_user_listing_path(current_user, listing)%>
+<%=link_to 'Delete This Listing ', user_listing_path(current_user, listing), method: :delete%>
+<%=link_to 'More Information ',user_listing_path(current_user, listing)%>
 <%end%>

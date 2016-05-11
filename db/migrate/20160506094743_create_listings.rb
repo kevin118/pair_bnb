@@ -10,6 +10,7 @@ class CreateListings < ActiveRecord::Migration
 		t.string :gym
 		t.string :internet
 		t.string :tub
+		t.string :places
      	t.timestamps null: false
     end
   end

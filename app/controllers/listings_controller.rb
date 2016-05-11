@@ -5,11 +5,14 @@ class ListingsController < ApplicationController
 
 
   def index
-    @listing = @user.listings.all
+  @listing = @user.listings.all
+  @reservations = Reservation.all
+
   end
  
   def show
     @listing = Listing.find(params[:id])
+    @reservations = @listing.reservations
   end
  
   def new
@@ -17,6 +20,7 @@ class ListingsController < ApplicationController
   end
  
   def edit
+
     @listing = @user.listings.find(params[:id])
   end
  
@@ -32,10 +36,9 @@ class ListingsController < ApplicationController
   end
  
   def update
-    @listing = @user.listing.find(params[:id])
- 
+    @listing = @user.listings.find(params[:id])
     if @listing.update(listing_params)
-      redirect_to @listing
+      redirect_to user_listings_path
     else
       render 'edit'
     end
@@ -45,7 +48,7 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @listing.destroy
  
-    redirect_to listings_path
+    redirect_to user_listings_path
   end
 
   def tags
@@ -57,11 +60,11 @@ class ListingsController < ApplicationController
   
   private
     def userid 
-      byebug
+      
       @user = User.find(params[:user_id])
     end
       
     def listing_params
-      params.require(:listing).permit(:property_name, :address, :property_type, :rental, :smoking, :gym, :internet, :tub, :all_tags)
+      params.require(:listing).permit(:property_name, :address, :property_type, :rental, :smoking, :gym, :internet, :tub, :all_tags, {places:[]})
     end
 end

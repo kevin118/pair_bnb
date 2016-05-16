@@ -25,13 +25,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'braintree'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem "mini_magick"
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

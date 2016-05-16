@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'payments/new'
+
   get 'reservations/index'
 
   get 'reservations/edit'
@@ -9,6 +11,10 @@ Rails.application.routes.draw do
 
   get 'listing/index'
 
+  get 'search', to: 'search#search'
+
+  
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -17,7 +23,9 @@ Rails.application.routes.draw do
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
   resources :listings do
-      resources :reservations
+      resources :reservations do
+ 
+      end
   end    
 
   end
@@ -44,6 +52,9 @@ Rails.application.routes.draw do
 
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
+  resources :reservations do
+    resources :payments, only: [:new, :create]
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   

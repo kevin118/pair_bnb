@@ -6,6 +6,7 @@ class CreateListings < ActiveRecord::Migration
 		t.string :address
 		t.string :property_type
 		t.string :rental
+		t.integer :price
 		t.string :smoking
 		t.string :gym
 		t.string :internet

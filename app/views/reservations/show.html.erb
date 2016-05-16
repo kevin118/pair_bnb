@@ -1,2 +1,23 @@
-<h1>Reservations#show</h1>
-<p>Find me in app/views/reservations/show.html.erb</p>
+
+
+<p>
+  <strong>Reservation ID:</strong>
+  <%=@reservation.id%>
+</p>
+
+<p>
+  <strong>Check In Date:</strong>
+  <%=@reservation.check_in%>
+</p>
+
+<p>
+  <strong>Check Out Date:</strong>
+  <%=@reservation.check_out%>
+</p>
+
+<p>
+  <strong>Total Price:</strong>
+  <%=@reservation.total_price%>
+</p>
+
+<%= link_to 'Pay Now', new_reservation_payment_path(@reservation), data: ['no-turbolink'=>true] %>

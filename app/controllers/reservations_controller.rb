@@ -13,8 +13,11 @@ class ReservationsController < ApplicationController
     @host = @listing.user_id
 
     if @reservation.save
-        ReservationMailer.booking_email(@customer,@host,@listing).deliver_now
-        redirect_to user_listing_path(current_user, @listing)
+        reservation1= @reservation.id
+        @total_price = @reservation.total_price
+
+        ReservationMailer.booking_email(@customer,@host, @reservation.id).deliver_later
+        redirect_to user_listing_reservation_path(current_user, @listing, @reservation)
     else
        flash[:danger]= 'Date is not available. Please choose another date'
        redirect_to (:back)    
@@ -30,13 +33,15 @@ class ReservationsController < ApplicationController
   end
 
   def new
-    @reservation = @listing.reservations.build
+    @listing = Listing.find(params[:listing_id])
+    @reservations = Reservation.new
   end
 
   private
   def reservation_params
-    params.require(:reservation).permit(:check_in, :check_out)
+    params.require(:reservation).permit(:check_in, :check_out, :total_price)
   end
+
 
 end
  

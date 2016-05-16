@@ -27,6 +27,11 @@
   <%= form.select :rental, [['Whole Unit','W'],['Single Room', 'R'], ['Shared Room', 'S']] %>
 </div>
 
+<div class="rental-field">
+  <%= form.label :price, "Price:" %>
+  <%= form.text_field :price %>
+</div>
+
 <%= form.label :smoking, "Allow smoking in property:" %>
 <%= form.check_box :smoking, value: "smoking" %>
 <br>

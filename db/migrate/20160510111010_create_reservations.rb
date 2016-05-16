@@ -3,6 +3,7 @@ class CreateReservations < ActiveRecord::Migration
     create_table :reservations do |t|
      t.integer :listing_id
      t.integer :user_id
+     t.integer :total_price
      t.date :check_in
      t.date :check_out
 

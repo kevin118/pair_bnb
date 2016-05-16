@@ -13,6 +13,7 @@ class ListingsController < ApplicationController
   def show
     @listing = Listing.find(params[:id])
     @reservations = @listing.reservations
+ 
   end
  
   def new
@@ -65,6 +66,6 @@ class ListingsController < ApplicationController
     end
       
     def listing_params
-      params.require(:listing).permit(:property_name, :address, :property_type, :rental, :smoking, :gym, :internet, :tub, :all_tags, {places:[]})
+      params.require(:listing).permit(:property_name, :address, :property_type, :rental,:price, :smoking, :gym, :internet, :tub, :all_tags, {places:[]})
     end
 end
